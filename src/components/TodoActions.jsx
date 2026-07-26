@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
   clearTodo,
-  deleteTodo,
+  deleteCompleted,
   removeToast,
 } from "../redux/features/todoSlice";
 
@@ -27,7 +27,10 @@ const TodoActions = () => {
       </button>
 
       <button
-        onClick={() => dispatch(deleteTodo())}
+        onClick={() => {
+          dispatch(deleteCompleted());
+          dispatch(removeToast());
+        }}
         disabled={completed === 0}
         className="rounded-lg bg-orange-500 px-5 py-2 font-semibold text-white transition hover:bg-orange-600 disabled:cursor-not-allowed disabled:bg-gray-400"
       >

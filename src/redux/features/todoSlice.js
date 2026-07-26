@@ -83,6 +83,11 @@ const todoSlice = createSlice({
     setFilter: (state, action) => {
       state.filter = action.payload;
     },
+    deleteCompleted(state) {
+      state.todos = state.todos.filter((todo) => !todo.completed);
+
+      localStorage.setItem("todos", JSON.stringify(state.todos));
+    },
   },
 });
 
@@ -96,5 +101,6 @@ export const {
   setSearch,
   setFilter,
   toggleTodo,
+  deleteCompleted,
 } = todoSlice.actions;
 export default todoSlice.reducer;
